@@ -186,25 +186,43 @@
         }
 
         .pipeline {
-            display: flex;
-            justify-content: space-around;
+            display: grid;
+            grid-template-columns: repeat(7, auto);
+            justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 50px 0;
+            gap: 10px;
+            margin: 50px auto;
+            max-width: 1400px;
+            padding: 20px;
         }
 
         .pipeline-step {
             background: linear-gradient(135deg, #63c3d1 0%, #52b3c1 100%);
             color: white;
-            padding: 30px;
-            border-radius: 15px;
+            padding: 20px 15px;
+            border-radius: 12px;
             text-align: center;
-            min-width: 200px;
+            width: 160px;
             box-shadow: 0 5px 15px rgba(99, 195, 209, 0.3);
             cursor: pointer;
             transition: all 0.3s;
             position: relative;
+        }
+
+        .pipeline-step h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .pipeline-step p {
+            font-size: 12px;
+            line-height: 1.3;
+        }
+
+        .arrow {
+            font-size: 24px;
+            color: #6b5b95;
+            font-weight: bold;
         }
 
         .pipeline-step:hover {
@@ -444,10 +462,14 @@
 
         .team-member {
             text-align: center;
-            padding: 30px;
+            padding: 40px 30px;
             background: #f8f9fa;
             border-radius: 15px;
             transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .team-member:hover {
@@ -455,25 +477,38 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
+        .member-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
         .member-name {
             font-size: 24px;
             font-weight: 700;
-            margin: 20px 0 10px;
+            margin: 10px 0;
             color: #2c2847;
         }
 
         .member-role {
             color: #63c3d1;
-            font-size: 16px;
+            font-size: 15px;
             margin-bottom: 15px;
+            line-height: 1.4;
         }
 
         .member-description {
             color: #666;
             font-size: 14px;
             line-height: 1.8;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             padding: 0 10px;
+        }
+
+        .member-links {
+            margin-top: 10px;
         }
 
         .member-links {
@@ -591,11 +626,24 @@
             }
 
             .pipeline {
-                flex-direction: column;
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .pipeline-step {
+                width: 100%;
             }
 
             .arrow {
                 transform: rotate(90deg);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .pipeline {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding: 20px;
             }
         }
     </style>
@@ -807,21 +855,18 @@
                 </p>
                 <div class="contact-info">
                     <h3 style="color: #2c2847; margin-bottom: 20px;">Get In Touch</h3>
-                    <p style="font-size: 18px; margin-bottom: 15px;">
-                        <strong>Email:</strong> team@aslytics.org
-                    </p>
                     <p style="font-size: 18px;">
-                        <strong>GitHub:</strong> github.com/Japleen-Kaur2409/ASLytics-RBC
+                        <strong>Email:</strong> aslytics@gmail.com
                     </p>
                 </div>
-                <a href="mailto:team@aslytics.org" class="cta-button" style="margin-top: 30px;">Contact Us for Funding Opportunities</a>
+                <a href="mailto:aslytics@gmail.com" class="cta-button" style="margin-top: 30px;">Contact Us for Funding Opportunities</a>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 ASLytics. Licensed under CC BY-NC-SA 4.0. Bridging the knowledge gap, so every voice is seen.</p>
+            <p>Bridging the knowledge gap, so every voice is seen.</p>
         </div>
     </footer>
 
