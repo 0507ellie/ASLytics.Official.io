@@ -1374,7 +1374,7 @@
                         model: config.model,
                         messages: [{
                             role: 'system',
-                            content: 'You are an ASL (American Sign Language) expert. Convert English sentences to ASL gloss notation. Rules: 1) Remove articles (a, an, the), 2) Remove be-verbs (am, is, are, was, were), 3) Remove auxiliary verbs (do, does, did), 4) Use topic-comment structure, 5) Put question words at the end, 6) Use all caps, 7) Keep it concise. Only output the gloss, no explanation.'
+                            content: 'You are an ASL (American Sign Language) expert. Convert English sentences to ASL gloss notation. Only output the gloss, no explanation.'
                         }, {
                             role: 'user',
                             content: `Convert to ASL gloss: "${text}"`
