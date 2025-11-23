@@ -86,6 +86,22 @@
             opacity: 0.3;
         }
 
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(99,195,209,0.1) 0%, transparent 70%);
+            animation: heroGlow 10s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(10%, 10%) scale(1.1); }
+        }
+
         .hero-content {
             position: relative;
             z-index: 1;
@@ -155,17 +171,23 @@
             border-radius: 15px;
             text-align: center;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
+            transform-style: preserve-3d;
         }
 
         .stat-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         .stat-card:hover .stat-number {
             color: #63c3d1;
+            transform: scale(1.1);
+        }
+
+        .stat-number {
+            transition: all 0.3s;
         }
 
         .stat-number {
@@ -331,6 +353,30 @@
             box-shadow: 0 0 0 3px rgba(99, 195, 209, 0.2);
         }
 
+        .example-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .example-btn {
+            background: #e8f4f8;
+            border: 2px solid #63c3d1;
+            color: #2c2847;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .example-btn:hover {
+            background: #63c3d1;
+            color: white;
+            transform: translateY(-2px);
+        }
+
         #glossOutput {
             background: #2c2847;
             color: #63c3d1;
@@ -446,6 +492,126 @@
         .tech-tag:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 20px rgba(107, 91, 149, 0.4);
+        }
+
+        /* Market Funnel */
+        .market-section {
+            margin-top: 80px;
+        }
+
+        .market-funnel {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px auto;
+            max-width: 1200px;
+        }
+
+        .funnel-item {
+            background: linear-gradient(135deg, #6b5b95 0%, #8b7ba8 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(107, 91, 149, 0.3);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .funnel-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(107, 91, 149, 0.5);
+        }
+
+        .funnel-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .funnel-value {
+            font-size: 42px;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .funnel-desc {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        /* Progress Section */
+        .progress-section {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin: 60px 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .progress-item {
+            margin: 30px 0;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .progress-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c2847;
+        }
+
+        .progress-percentage {
+            font-size: 18px;
+            font-weight: 700;
+            color: #63c3d1;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #63c3d1 0%, #52b3c1 100%);
+            border-radius: 15px;
+            transition: width 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        .progress-desc {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
         }
 
         /* Team Section */
@@ -637,6 +803,10 @@
             .arrow {
                 transform: rotate(90deg);
             }
+
+            .market-funnel {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 1200px) {
@@ -688,6 +858,28 @@
                 <div class="stat-card">
                     <div class="stat-number">430M+</div>
                     <div class="stat-text">People worldwide with hearing loss need better accessibility</div>
+                </div>
+            </div>
+
+            <!-- Market Size -->
+            <div class="market-section">
+                <h3 style="text-align: center; font-size: 32px; margin: 60px 0 40px; color: #2c2847;">Market Opportunity</h3>
+                <div class="market-funnel">
+                    <div class="funnel-item">
+                        <div class="funnel-label">TAM (Total Addressable Market)</div>
+                        <div class="funnel-value">$12.8B</div>
+                        <div class="funnel-desc">Global accessibility technology market</div>
+                    </div>
+                    <div class="funnel-item">
+                        <div class="funnel-label">SAM (Serviceable Available Market)</div>
+                        <div class="funnel-value">$4.2B</div>
+                        <div class="funnel-desc">Video accessibility solutions</div>
+                    </div>
+                    <div class="funnel-item">
+                        <div class="funnel-label">SOM (Serviceable Obtainable Market)</div>
+                        <div class="funnel-value">$580M</div>
+                        <div class="funnel-desc">ASL translation for online platforms</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -748,13 +940,22 @@
         <div class="container">
             <h2>Technology & Architecture</h2>
             
-            <!-- Real-time Processing Demo -->
+            <!-- Live Translation Demo -->
             <div class="live-demo-box">
-                <h3 style="text-align: center; color: #2c2847; margin-bottom: 30px;">Live Translation Simulation</h3>
+                <h3 style="text-align: center; color: #2c2847; margin-bottom: 20px;">Live ASL Translation Demo</h3>
+                <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 14px;">
+                    ⚡ Powered by AI - Converting English to ASL Gloss notation in real-time
+                </p>
                 <div class="translation-demo">
                     <div class="input-box">
                         <label>Input Text:</label>
-                        <input type="text" id="inputText" placeholder="Type something..." value="What is your name?">
+                        <input type="text" id="inputText" placeholder="Type something... (e.g., 'What is your name?')" value="What is your name?">
+                        <div class="example-buttons">
+                            <button class="example-btn" onclick="useExample('What is your name?')">What is your name?</button>
+                            <button class="example-btn" onclick="useExample('How are you today?')">How are you today?</button>
+                            <button class="example-btn" onclick="useExample('Nice to meet you')">Nice to meet you</button>
+                            <button class="example-btn" onclick="useExample('I like learning ASL')">I like learning ASL</button>
+                        </div>
                     </div>
                     <div class="processing-visualization">
                         <canvas id="processingCanvas" width="600" height="200"></canvas>
@@ -762,6 +963,14 @@
                     <div class="output-box">
                         <label>ASL Gloss Output:</label>
                         <div id="glossOutput">YOUR NAME WHAT</div>
+                        <div id="loadingIndicator" style="display: none; text-align: center; margin-top: 10px; color: #63c3d1;">
+                            <span>🤖 AI processing...</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; padding: 15px; background: #f0f8ff; border-radius: 10px; border-left: 4px solid #63c3d1;">
+                        <p style="margin: 0; font-size: 13px; color: #555;">
+                            <strong>Note:</strong> This demo uses AI to convert English to ASL gloss. The actual ASLytics system includes additional pose estimation and animation generation for full sign language video output.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -814,7 +1023,7 @@
                     <p class="member-role">UofT CS (Specialist) / Data Science (Specialist)</p>
                     <p class="member-description">
                         Data Scientist @ Dr Duncan's Lab<br>
-                        Computational Research Assistant @ UofT Developmental  AI Lab<br>
+                        Computational Research Assistant @ UofT Developmental AI Lab<br>
                         Prev ML Intern @ Mirle Corp.
                     </p>
                     <a href="https://www.linkedin.com/in/yi-ting-chang-428b27244/" target="_blank" class="linkedin-btn">
@@ -830,7 +1039,7 @@
                     <p class="member-description">
                         [Add Napasorn's description here]
                     </p>
-                    <a href="https://www.linkedin.com/in/napaorn-kao-ian/" target="_blank" class="linkedin-btn">
+                    <a href="https://www.linkedin.com/in/napasorn-kao-ian" target="_blank" class="linkedin-btn">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                         </svg>
@@ -843,7 +1052,7 @@
                     <p class="member-description">
                         [Add Japleen's description here]
                     </p>
-                    <a href="https://www.linkedin.com/in/japleen-kaur-uoft/" target="_blank" class="linkedin-btn">
+                    <a href="https://www.linkedin.com/in/japleen-kaur" target="_blank" class="linkedin-btn">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                         </svg>
@@ -857,6 +1066,67 @@
     <section id="impact" class="impact">
         <div class="container">
             <h2>Future Vision</h2>
+            
+            <!-- Project Progress -->
+            <div class="progress-section">
+                <h3 style="text-align: center; color: #2c2847; margin-bottom: 40px; font-size: 28px;">Project Milestones</h3>
+                
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-title">Dataset Collection & Processing</span>
+                        <span class="progress-percentage">100%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" data-progress="100"></div>
+                    </div>
+                    <div class="progress-desc">4,400+ ASL signs collected and processed into pose format ✓</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-title">Core Algorithm Development</span>
+                        <span class="progress-percentage">85%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" data-progress="85"></div>
+                    </div>
+                    <div class="progress-desc">Text-to-Gloss-to-Pose pipeline operational, optimizing accuracy</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-title">YouTube Extension Integration</span>
+                        <span class="progress-percentage">70%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" data-progress="70"></div>
+                    </div>
+                    <div class="progress-desc">Chrome extension in beta testing phase</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-title">User Testing & Feedback</span>
+                        <span class="progress-percentage">40%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" data-progress="40"></div>
+                    </div>
+                    <div class="progress-desc">Initial testing with ASL community, expanding feedback loop</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-title">Public Launch & Scale</span>
+                        <span class="progress-percentage">15%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" data-progress="15"></div>
+                    </div>
+                    <div class="progress-desc">Planning infrastructure and multi-platform expansion</div>
+                </div>
+            </div>
+
             <div class="vision-cards">
                 <div class="vision-card">
                     <h3>Real User Testing</h3>
@@ -1008,25 +1278,149 @@
 
         // ===== ML VISUALIZATION FEATURES =====
 
-        // Real-time translation demo
+        // Example button handler
+        function useExample(text) {
+            const inputText = document.getElementById('inputText');
+            inputText.value = text;
+            inputText.dispatchEvent(new Event('input'));
+        }
+
+        // Real-time translation with OpenRouter API
         const inputText = document.getElementById('inputText');
         const glossOutput = document.getElementById('glossOutput');
+        const loadingIndicator = document.getElementById('loadingIndicator');
         
-        const glossMap = {
-            'what is your name': 'YOUR NAME WHAT',
-            'how are you': 'YOU HOW',
-            'nice to meet you': 'NICE MEET YOU',
-            'thank you': 'THANK YOU',
-            'hello': 'HELLO',
-            'goodbye': 'GOODBYE'
+        // API Keys configuration
+        const API_CONFIG = {
+            primary: {
+                url: 'https://openrouter.ai/api/v1/chat/completions',
+                key: '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', // Replace with your primary key
+                model: 'openai/gpt-3.5-turbo'
+            },
+            fallback: {
+                url: 'https://openrouter.ai/api/v1/chat/completions',
+                key: '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', // Replace with your fallback key
+                model: 'openai/gpt-3.5-turbo'
+            }
         };
-
+        
+        let debounceTimer;
+        
         inputText.addEventListener('input', function() {
-            const text = this.value.toLowerCase().trim();
-            const gloss = glossMap[text] || text.toUpperCase().split(' ').reverse().join(' ');
-            glossOutput.textContent = gloss;
-            animateProcessing();
+            clearTimeout(debounceTimer);
+            const text = this.value.trim();
+            
+            if (!text) {
+                glossOutput.textContent = '';
+                return;
+            }
+            
+            // Show loading
+            loadingIndicator.style.display = 'block';
+            
+            debounceTimer = setTimeout(async () => {
+                await convertToGloss(text);
+            }, 1000);
         });
+        
+        // Convert text to ASL Gloss using API with fallback
+        async function convertToGloss(text) {
+            try {
+                // Try primary API first
+                const result = await callAPI(text, API_CONFIG.primary);
+                if (result) {
+                    glossOutput.textContent = result;
+                    loadingIndicator.style.display = 'none';
+                    animateProcessing();
+                    return;
+                }
+                
+                // If primary fails, try fallback API
+                console.log('Primary API failed, trying fallback...');
+                const fallbackResult = await callAPI(text, API_CONFIG.fallback);
+                if (fallbackResult) {
+                    glossOutput.textContent = fallbackResult;
+                    loadingIndicator.style.display = 'none';
+                    animateProcessing();
+                    return;
+                }
+                
+                // If both APIs fail, use rule-based fallback
+                console.log('Both APIs failed, using rule-based fallback');
+                glossOutput.textContent = fallbackGloss(text);
+                loadingIndicator.style.display = 'none';
+                animateProcessing();
+                
+            } catch (error) {
+                console.error('Conversion error:', error);
+                glossOutput.textContent = fallbackGloss(text);
+                loadingIndicator.style.display = 'none';
+                animateProcessing();
+            }
+        }
+        
+        // Call OpenRouter API
+        async function callAPI(text, config) {
+            try {
+                const response = await fetch(config.url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${config.key}`,
+                        'HTTP-Referer': 'https://aslytics.com',
+                        'X-Title': 'ASLytics Demo'
+                    },
+                    body: JSON.stringify({
+                        model: config.model,
+                        messages: [{
+                            role: 'system',
+                            content: 'You are an ASL (American Sign Language) expert. Convert English sentences to ASL gloss notation. Rules: 1) Remove articles (a, an, the), 2) Remove be-verbs (am, is, are, was, were), 3) Remove auxiliary verbs (do, does, did), 4) Use topic-comment structure, 5) Put question words at the end, 6) Use all caps, 7) Keep it concise. Only output the gloss, no explanation.'
+                        }, {
+                            role: 'user',
+                            content: `Convert to ASL gloss: "${text}"`
+                        }],
+                        temperature: 0.3,
+                        max_tokens: 100
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    const gloss = data.choices[0].message.content.trim();
+                    return gloss;
+                }
+                return null;
+            } catch (error) {
+                console.error('API call error:', error);
+                return null;
+            }
+        }
+        
+        // Fallback rule-based conversion
+        function fallbackGloss(text) {
+            text = text.toLowerCase().trim();
+            text = text.replace(/[?.!,]/g, '');
+            text = text.replace(/\b(a|an|the)\b/g, '');
+            text = text.replace(/\b(am|is|are|was|were)\b/g, '');
+            text = text.replace(/\b(do|does|did|will|would|should|could)\b/g, '');
+            
+            let words = text.split(' ').filter(w => w.length > 0);
+            
+            const questionWords = ['what', 'where', 'when', 'who', 'why', 'how'];
+            let qWord = '';
+            words = words.filter(w => {
+                if (questionWords.includes(w)) {
+                    qWord = w.toUpperCase();
+                    return false;
+                }
+                return true;
+            });
+            
+            let gloss = words.map(w => w.toUpperCase()).join(' ');
+            if (qWord) gloss = gloss + ' ' + qWord;
+            
+            return gloss.trim();
+        }
 
         // Processing visualization
         function animateProcessing() {
@@ -1132,7 +1526,34 @@
         setTimeout(() => {
             drawVocabChart();
             animateProcessing();
+            animateProgressBars();
         }, 500);
+
+        // Animate progress bars
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-bar-fill');
+            progressBars.forEach(bar => {
+                const progress = bar.getAttribute('data-progress');
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = progress + '%';
+                }, 100);
+            });
+        }
+
+        // Re-animate progress bars when scrolling into view
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateProgressBars();
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const progressSection = document.querySelector('.progress-section');
+        if (progressSection) {
+            progressObserver.observe(progressSection);
+        }
     </script>
     
     <style>
